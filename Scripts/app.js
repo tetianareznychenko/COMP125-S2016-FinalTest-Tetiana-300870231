@@ -19,9 +19,9 @@ var core;
     "use strict";
     var canvas;
     var stage;
-    var rollButton = new createjs.Bitmap ("../Assets/images/rollButton.png"); 
-    var diceLabelOne = new createjs.Bitmap ("../Assets/images/blank.png"); 
-    var diceLabelTwo = new createjs.Bitmap ("../Assets/images/blank.png"); 
+    var rollButton = new createjs.Bitmap ("C:\Users\Zver\Desktop\COMP125-S2016-FinalTest-Tetiana-300870231\Assets\images\rollButton.png"); 
+    var diceLabelOne = new createjs.Bitmap ("C:\Users\Zver\Desktop\COMP125-S2016-FinalTest-Tetiana-300870231\Assets\images\blank.png"); 
+    var diceLabelTwo = new createjs.Bitmap ("C:\Users\Zver\Desktop\COMP125-S2016-FinalTest-Tetiana-300870231\Assets\images\blank.png"); 
     var yDirection = 1;
     var xDirection = 1;
     var dy = 1;
@@ -61,23 +61,26 @@ var core;
      */    
     function gameLoop() {
 
-        stage.update(); // refresh the stage container
+        diceLabelOne.x = checkBounds(diceLabelOne.x, core.CANVAS_WIDTH);
+        diceLabelOne.y = checkBounds(diceLabelOne.y, core.CANVAS_HEIGHT);
+        diceLabelTwo.x = checkBounds(diceLabelOne.x, core.CANVAS_WIDTH);
+        diceLabelTwo.y = checkBounds(diceLabelOne.y, core.CANVAS_HEIGHT);
     }
-    
-    //Create an array of images
-    var dicePictures = ['images/1.png', 'images/2.png', 'images/3.png', 'images/4.png', 'images/5.png', 'images/6.png'];     
-    
+        
     //Display Random picture
     function randomImg(){
     var randomNumberOne = Math.floor(Math.random() * 7) + 1;
     var randomNumberTwo = Math.floor(Math.random() * 7) + 1;
     diceLabelOne = "img_" + randomNumberOne + ".png";
     diceLabelTwo = "img_" + randomNumberTwo + ".png";
+    console.log(diceLabelOne);
+    console.log(diceLabelTwo);
     
  }
 
     function rollButton_clicked() {
     rollButton = randomImg(); 
+    console.log(rollButton);
     }
 
 
