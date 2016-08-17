@@ -1,3 +1,6 @@
+/// <reference path="objects/label.ts"/>
+/// <reference path="objects/button.ts"/>
+
 /**
  * FileName: app.js
  *
@@ -16,9 +19,9 @@ var core;
     "use strict";
     var canvas;
     var stage;
-    var rollButton;
-    var diceLabelOne; 
-    var diceLabelTwo;
+    var rollButton = new createjs.Bitmap ("../Assets/images/rollButton.png"); 
+    var diceLabelOne = new createjs.Bitmap ("../Assets/images/blank.png"); 
+    var diceLabelTwo = new createjs.Bitmap ("../Assets/images/blank.png"); 
     var yDirection = 1;
     var xDirection = 1;
     var dy = 1;
@@ -57,9 +60,35 @@ var core;
      * @method gameLoop
      */    
     function gameLoop() {
-        stage.update();
+
+        stage.update(); // refresh the stage container
     }
+    
+    //Create an array of images
+    var dicePictures = ['images/1.png', 'images/2.png', 'images/3.png', 'images/4.png', 'images/5.png', 'images/6.png'];     
+    
+    //Display Random picture
+    function randomImg(){
+    var randomNumberOne = Math.floor(Math.random() * 7) + 1;
+    var randomNumberTwo = Math.floor(Math.random() * 7) + 1;
+    diceLabelOne = "img_" + randomNumberOne + ".png";
+    diceLabelTwo = "img_" + randomNumberTwo + ".png";
+    
+ }
+
+    function rollButton_clicked() {
+    rollButton = randomImg(); 
+    }
+
+
     function main() {
+    
+    //Add labels to canvas
+    stage.addChild(diceLabelOne);
+    stage.addChild(diceLabelTwo);
+    stage.addChild(rollButton);
+
+
     }
     window.addEventListener("load", init);
 })(core || (core = {}));
